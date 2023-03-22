@@ -1,4 +1,4 @@
-import { Specification } from "../entities/Specification";
+import { Specification } from "../infra/typeorm/entities/Specification";
 
 interface ISpecificationsRepositoryDTO {
     name: string;
@@ -6,8 +6,9 @@ interface ISpecificationsRepositoryDTO {
 }
 
 interface ISpecificationsRepository {
-    create({ name, description }: ISpecificationsRepositoryDTO): Promise<void>
+    create({ name, description }: ISpecificationsRepositoryDTO): Promise<Specification>
     findByName(name: string): Promise<Specification>
+    findByIds(ids: string[]): Promise<Specification[]>
 
 }
 
